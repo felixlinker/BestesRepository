@@ -6,8 +6,8 @@ import os
 import string
 import itertools
 from queue import Queue
-from Edge import EDGE
-from Vertex import VERTEX
+from .Edge import EDGE
+from .Vertex import VERTEX
 from typing import List
 from copy import copy
 

@@ -9,9 +9,9 @@ import string
 import math
 from collections import defaultdict
 from typing import List
-from Graph import GRAPH
-from Vertex import VERTEX
-from Edge import EDGE
+from .Graph import GRAPH
+from .Vertex import VERTEX
+from .Edge import EDGE
 from itertools import combinations
 
 def buildRndGraph(nr_nodes, p_connected, labeled_nodes=False, labeled_edges=False, directed=False,

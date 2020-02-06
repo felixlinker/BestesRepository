@@ -2,9 +2,9 @@
 # -*- coding: utf-8 -*-
 import os
 from runpy import run_path
-from Graph import GRAPH
-from Vertex import VERTEX
-from Edge import EDGE
+from .Graph import GRAPH
+from .Vertex import VERTEX
+from .Edge import EDGE
 
 
 def import_file(filename, function_name):   # FIXME: evtl import von GRAPH oder so

@@ -7,16 +7,16 @@ Created on 07.05.2019
 '''
 
 from typing import List
-from Vertex import VERTEX
+from .Vertex import VERTEX
 
 class EDGE(object):
     def __init__(self, id, start_and_end, label):
         self.__id = id
         self.__start_and_end: List[VERTEX] = start_and_end
         self.__label = label
-        
+
     def __str__(self):
-        res = "[" + str(self.__id) + ";" 
+        res = "[" + str(self.__id) + ";"
         start = self.__start_and_end[0]
         end = self.__start_and_end[1]
         res += "(" + str(start) + ";" + str(end) + ")" + ";"

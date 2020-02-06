@@ -7,19 +7,19 @@ Created on 07.05.2019
 '''
 import os, string, random, itertools
 from typing import List, Tuple
-from Graph import GRAPH, density, retrieve_graph_from_clique, retrieve_original_subgraphs, \
+from GraphDating.Graph import GRAPH, density, retrieve_graph_from_clique, retrieve_original_subgraphs, \
     anchor_from_anchor_vertex_list, remaining_candidates, retrieve_fusion_graph
-from Vertex import VERTEX
-from Edge import EDGE
-from Command_Line_Parser import parse_command_line
-from Modulares_Produkt import modular_product
-from Graph_Builder import buildRndGraph, buildRndCluster
-from MB_State import MB_State
-from GuideTree import upgma, guide_tree_to_newick, save_newick, parse_newick_file_into_tree, \
+from GraphDating.Vertex import VERTEX
+from GraphDating.Edge import EDGE
+from GraphDating.Command_Line_Parser import parse_command_line
+from GraphDating.Modulares_Produkt import modular_product
+from GraphDating.Graph_Builder import buildRndGraph, buildRndCluster
+from GraphDating.MB_State import MB_State
+from GraphDating.GuideTree import upgma, guide_tree_to_newick, save_newick, parse_newick_file_into_tree, \
     parse_list_of_scored_graph_pairs_into_newick, parse_newick_string_into_tree
-from Neo4j import NEO4J
+from GraphDating.Neo4j import NEO4J
 from runpy import run_path
-from Json_Parser import json_parser
+from GraphDating.Json_Parser import json_parser
 from copy import deepcopy
 import time
 
@@ -186,11 +186,11 @@ def parser(file, neo4j):
     if pos == -1:
         pos = file_path_name.rfind("\\")
     graph_name = file_path_name[pos + 1: -6]
-    
+
     # create Neo4J View
     if neo4j:
         neo4jProjekt = NEO4J(args.neo4j[0], args.neo4j[1], args.neo4j[2], vertices_objects, edges_objects, graph_name, False)
-    
+
     # create graph from class GRAPH
     graph = GRAPH(graph_name, vertices_objects, edges_objects, number_vertices, number_edges, directed,
                   has_labeled_nodes=vertices_labelled, has_labeled_edges=edges_labbelled)
@@ -547,7 +547,7 @@ def pairwise_alignment(input_graphs, matching_method, pivot, number_matchings, c
     isomorphism between two graphs relative to the number of vertices of the bigger graph, i.e. that contains the
     maximal number of nodes.
     Return Type: Cluster
-    """ 
+    """
     combinations_of_graphs = itertools.combinations(input_graphs, 2)
     scoring: List[Tuple] = []
     for c in combinations_of_graphs:
@@ -791,7 +791,7 @@ if __name__ == '__main__':
             # if args.neo4j:
                 # neo4jProjekt = NEO4J("http://localhost:11003/db/data/", "neo4j", "1234")
                 # neo4jProjekt.create_graphs(neo4jProjekt.get_graph(), graph.get_list_of_vertices(), graph.get_list_of_edges(),graph.get_name())
-            
+
             # Log statement for the console about the modular product
             if args.vertex_label_comparison and args.edge_label_comparison:
                 print("Modular Product of " + graph1_name + " and " + graph2_name +
@@ -837,7 +837,7 @@ if __name__ == '__main__':
                     print("Relative size reduction: " + str(smaller))
                 except ValueError("Illegal value for the allowed reduction of subgraph size!"):
                     pass
-        if len(args.graph_alignment) >= 2: #if e.g. bk 2 
+        if len(args.graph_alignment) >= 2: #if e.g. bk 2
             try:
                 i = int(args.graph_alignment[1])
                 if i < 1:

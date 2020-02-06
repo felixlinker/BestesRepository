@@ -1,9 +1,9 @@
 import json
-from Neo4j import NEO4J
+from .Neo4j import NEO4J
 from typing import List, Dict
-from Vertex import VERTEX
-from Edge import EDGE
-from Graph import GRAPH
+from .Vertex import VERTEX
+from .Edge import EDGE
+from .Graph import GRAPH
 
 
 def json_parser(file_path, neo4j, no_h_atoms):
